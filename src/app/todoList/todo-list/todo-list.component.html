@@ -1,0 +1,42 @@
+<h2>ToDoListComponent</h2>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let t of tasks; let i = index"
+    (click)="select(i)"
+    [class.active]="selectedIndex === i"
+  >
+    <p>{{ i + 1 }} : {{ t.name }}</p>
+    <button class="btn btn-danger" (click)="remove(i)">Remove</button>
+  </li>
+</ul>
+<div class="mt-3" [hidden]="!isSelected">
+  <div class="list-group">
+    <a
+      href="#"
+      class="
+        list-group-item list-group-item-action
+        flex-column
+        align-items-start
+      "
+    >
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Task</h5>
+    </div>
+    <p class="mb-1">{{ taskShow.name }}.</p>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Description</h5>
+      </div>
+      <p class="mb-1">{{ taskShow.description }}.</p>
+    </a>
+  </div>
+</div>
+<app-panel>
+  <h5>Add Task</h5>
+  <div>name : <input class="form-control" [(ngModel)]="task.name" /></div>
+  <div>
+    description :
+    <input class="form-control" [(ngModel)]="task.description" />
+  </div>
+  <button class="btn btn-primary mt-2" (click)="add()">Add</button>
+</app-panel>
